@@ -1,0 +1,32 @@
+PORTFOLIO LORENZO BONDANI — sito statico (ex Cargo)
+
+VEDERLO
+  Doppio clic su index.html.
+
+PUBBLICARLO SU GITHUB PAGES (gratis)
+  1. github.com > New repository > nome "portfolio" > Public > Create
+  2. "uploading an existing file" > trascina TUTTO il contenuto di questa cartella
+     (se il browser si lamenta per il numero di file, carica prima la cartella images, poi il resto)
+  3. Settings > Pages > Source: Deploy from a branch > main > / (root) > Save
+  Dopo un paio di minuti il sito è online su TUONOME.github.io/portfolio
+
+DOMINIO PERSONALE (es. lorenzobondani.com)
+  1. Compra il dominio da un registrar (Namecheap, Cloudflare, Aruba...)
+  2. Nel pannello DNS del registrar aggiungi:
+       A     @    185.199.108.153
+       A     @    185.199.109.153
+       A     @    185.199.110.153
+       A     @    185.199.111.153
+       CNAME www  TUONOME.github.io
+  3. Su GitHub: Settings > Pages > Custom domain > lorenzobondani.com > Save
+  4. Quando compare, spunta "Enforce HTTPS"
+
+CARTELLE
+  index.html          home (striscia che scorre + orologio)
+  work/               lista dei lavori
+  about/              about e contatti
+  <progetto>/         una cartella per ogni progetto
+  images/             tutte le foto
+  style.css           grafica
+  script.js           animazioni, orologio, zoom delle foto
+  sorgenti/           dati e generatore (per aggiungere progetti: chiedi a Claude)

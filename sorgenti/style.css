@@ -1,0 +1,184 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root {
+  --ink: rgba(0, 0, 0, 0.78);
+  --line: rgba(0, 0, 0, 0.15);
+  --pad: 8px;
+  --gutter: 14px;
+  --fs: 12px;
+}
+
+html, body { margin: 0; padding: 0; background: #fff; }
+
+body {
+  font-family: "Geist", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-size: var(--fs);
+  line-height: 1.1;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { opacity: 0.55; }
+img { display: block; }
+
+/* ---------- HEADER ---------- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 7px var(--pad);
+  z-index: 5;
+}
+.site-header nav a { margin-left: 10px; }
+
+/* ---------- HOME: striscia che scorre + orologio ---------- */
+.marquee {
+  position: fixed;
+  left: 0; right: 0;
+  bottom: 39px;
+  height: 43vh;
+  overflow: hidden;
+  z-index: 1;
+}
+.marquee-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-track img {
+  height: 100%;
+  width: auto;
+  flex: none;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.clock {
+  position: fixed;
+  left: 0;
+  bottom: 26px;
+  font-variant-numeric: tabular-nums;
+  z-index: 1;
+}
+
+/* ---------- ABOUT ---------- */
+.about {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gutter);
+  padding: 7px var(--pad);
+  z-index: 5;
+}
+.about-contact { grid-column: span 4; }
+.about-contact p { margin: 38px 0 0; }
+.about-bio { grid-column: 8 / span 3; }
+.about-close { grid-column: 11 / span 2; text-align: right; }
+
+/* ---------- WORK (lista progetti) ---------- */
+.work-page { background: #fdfdfd; }
+.work-list {
+  margin-top: 96px;
+  border-top: 1px solid var(--line);
+  padding: 46px var(--pad) 120px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--gutter);
+  row-gap: 28px;
+}
+.work-item {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--gutter);
+  align-items: start;
+}
+.work-item:hover { opacity: 1; }
+.work-item:hover .work-text { opacity: 0.55; }
+.work-thumb {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.work-thumb img { height: 165px; width: auto; max-width: 100%; object-fit: contain; object-position: left top; }
+.work-text { padding-top: 6px; }
+
+/* ---------- PAGINA PROGETTO ---------- */
+.sheet {
+  position: relative;
+  z-index: 10;
+  margin-top: 60vh;
+  background: #fff;
+  min-height: 40vh;
+  padding: 26px var(--pad) 140px;
+}
+.credits { min-height: 70px; }
+.return-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--gutter);
+  align-items: center;
+  margin: 30px 0 80px;
+}
+.return-row hr {
+  grid-column: span 8;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+.caption {
+  grid-column: span 4;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-weight: 400;
+  font-size: 8px;
+  letter-spacing: 0.02em;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+.gallery img {
+  height: min(600px, 82vh);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 94vw; max-height: 94vh; width: auto; height: auto; }
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 760px) {
+  .marquee { height: 38vh; }
+  .about { grid-template-columns: 1fr; row-gap: 22px; }
+  .about-contact, .about-bio, .about-close { grid-column: auto; }
+  .about-close { position: absolute; top: 7px; right: var(--pad); }
+  .work-list { grid-template-columns: 1fr; margin-top: 60px; padding-top: 24px; }
+  .work-item { grid-column: auto; }
+  .return-row hr { grid-column: span 6; }
+  .caption { grid-column: span 6; }
+  .gallery { gap: 12px; }
+  .gallery img { height: auto; width: 100%; }
+}
